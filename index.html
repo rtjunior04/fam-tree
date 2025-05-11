@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Teague Tree</title>
+  <script src="https://balkangraph.com/js/FamilyTree.js"></script>
+  <style>
+    #tree { width: 100%; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="tree"></div>
+  <script>
+    const people = [];
+    for (let i = 1; i <= 50; i++) {
+      people.push({
+        id: i,
+        pid: i > 2 ? Math.floor(i / 2) : null, // randomly assign parent (not perfect but works)
+        name: "Person " + i,
+        gender: i % 2 === 0 ? "male" : "female"
+      });
+    }
+
+    new FamilyTree(document.getElementById("tree"), {
+      nodes: people
+    });
+  </script>
+</body>
+</html>
